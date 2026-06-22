@@ -1,0 +1,577 @@
+@font-face {
+    font-family:'Minecraft';
+    src: url(fonts/Minecraft.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #9ecaff;
+
+}
+.fridge-ui {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 30px;
+}
+.refrigerator {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 30px;
+    border-radius: 5px;
+    perspective: 1000px;
+}
+/*-------------------- Short Shelf (Top) --------------------------- */
+.shelfShort-door {
+    position: relative;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 145px;
+    height: 145px;
+    background-color: #003782;
+    border-radius: 3px;
+    transition: transform 0.5s ease;
+    transform-origin: right;
+    transform-style: preserve-3d;
+    border: 2px solid black;
+    z-index: 5;
+}
+.shelfShort-door.opened {
+    transform: rotateY(160deg);
+}
+.shortDoor-front {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+}
+.shelfShortDoor.opened .shortDoor-front {
+    pointer-events: none;
+}
+.shortDoor-back {
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+.shortDoor-background {
+    position:relative;
+    inset: 0;
+    background-color: white;
+    width: 130px;
+    height: 130px;
+    border-radius: 2px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.sticky-notes {
+    position: absolute;
+    left: 30px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    transition: 0.5s;
+}
+.blueberryIcon-background {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 45px;
+    top: 30px;
+    background-color: #5697ef;
+    height: 30px;
+    width: 45px;
+    border: 1.5px solid black;
+    border-radius: 15px;
+}
+.blueberry {
+    width: 40px;
+}
+.shelfShort-handle {
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
+    background-color: #c2c2c2;
+    border-radius: 30px;
+    border: 1px solid black;
+    height: 50px;
+    width: 8px;
+
+}
+.door-shadow {
+    background-color: #002d6a;
+    width: 25%;
+    height: 100%;
+    border-radius: 3px;
+    pointer-events: none;
+}
+.shelf-short {
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    background-color: #003782;
+    z-index: 1;
+    border-radius: 2px;
+    border: 2px solid black;
+}
+.bgShelf-top {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 135px;
+    height: 135px;
+    background-color: white;
+    border-radius: 2px;
+}
+.topShelf1, .topShelf2, .topShelf3 {
+    width: 125px;
+    height: 40px;
+    background-color: #5697ef;
+    border-radius: 2px;
+}
+/*-------------------- Top Shelf 1 --------------------------- */
+.topShelf1 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 5px;
+}
+.topShelf1-items {
+    display: flex;
+    gap: 5px;
+    margin-right: 20px;
+}
+.topShelf1 img { /*------ Dutch Mill ------ */
+    width: 12px;    
+    height: 25px;
+    transition: 0.5s;
+}
+/*-------------------- Top Shelf 2 --------------------------- */
+.topShelf2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.topShelf2-items {
+    display: flex;
+    margin-left: 20px;
+}
+.jar {
+    position: relative;
+    background-image: url(items/jar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 28px;
+    height: 40px;
+    transition: 0.5s;
+    image-rendering: pixelated;
+}
+.jarBlueberry {
+    position: relative;
+    background-image: url(items/jar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 28px;
+    height: 40px;
+    transition: 0.5s;
+    image-rendering: pixelated;
+}
+.jarStone {
+    position: relative;
+    background-image: url(items/jar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 28px;
+    height: 40px;
+    transition: 0.5s;
+    image-rendering: pixelated;
+}
+.flowers {
+    position: absolute;
+    width: 13px;
+    height: 19px;
+    left: 8px;
+    top: 17px;
+}
+/*-------------------- Top Shelf 3 --------------------------- */
+.topShelf3 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+}
+.topShelf3-items {
+    display: flex;
+    margin-left: 15px;
+}
+.bowl {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.bowl-image {
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+}
+.orange {
+    position: absolute;
+    width: 10px;
+    height: 9px;
+    transition: 0.5s;
+}
+.orange1 {
+    top: 17px;
+    left: 5px;
+    z-index: 2;
+}
+.strawberry {
+    transform:rotate(80deg);
+    top: 18px;
+    left: 11px;
+    z-index: 1;
+}
+.orange3 {
+    transform:rotate(-49deg);
+    top: 18px;
+    left: 17px;
+    z-index: 4;
+}
+.blueberry2 {
+    transform:rotate(178deg);
+    width: 12px;
+    height: 12px;
+    top: 17px;
+    left: 22px;
+    z-index: 3;
+}
+
+/*-------------------- Inspection Area & Animation --------------------------- */
+
+.item {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+.inspection-area {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-end;
+    width: 330px;
+    height: 100px;
+}
+/*--------------- Welcome Message ----------------- */
+.welcome-bg {
+    padding-top: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+.text-bubble-welcome {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    background-color: white;
+    width: 150px;
+    min-height: 45px;
+    border-radius: 10px;
+    z-index: 20;
+    padding-top: 10px;
+    padding: 15px 15px;
+    border: 2px solid #523914;
+    transition: opacity 1s ease;
+}
+.otter-welcome {
+    position: absolute;
+    bottom: 55px;
+    top: -20px;
+    left: 70px;
+    width: 30px;
+    height: 25px;
+    z-index: 10;
+    image-rendering: pixelated;
+}
+.text-bubble-welcome h1 {
+    font-size: 9px;
+    font-family: 'Minecraft';
+    color: rgba(0, 0, 0, 0.664);
+    line-height: 1.5;
+}
+.text-bubble-welcome.hide-welcome {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.text-bubble {
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    background-color: white;
+    width: 150px;
+    min-height: 60px;
+    border-radius: 10px;
+    z-index: 20;
+    padding: 10px 10px 10px 15px;
+    border: 2px solid #523914;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.text-bubble.show {
+    opacity: 1;
+    pointer-events: none;
+}
+.text-bubble::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 40px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 20px solid #523914;
+}
+.text-bubble::after {
+    content: '';
+    position: absolute;
+    right: calc(100% - 2px);
+    top: 42px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 18px solid white; /* bubble color */
+}
+.otter {
+    position: absolute;
+    bottom: 55px;
+    top: -20px;
+    left: 65px;
+    width: 30px;
+    height: 25px;
+    z-index: 10;
+    image-rendering: pixelated;
+}
+.text-bubble h1 {
+    font-size: 9px;
+    font-family: 'Minecraft';
+    color: rgba(0, 0, 0, 0.664);
+    line-height: 1.5;
+}
+.sticky-notes.selected {
+    transform: translateY(-128px) translateX(-130px) scale(1.5);
+}
+.dutchmill1.selected {
+    transform: translateY(-110px) translateX(-20px) scale(1.5);
+}
+.dutchmill2.selected {
+    transform: translateY(-115px) translateX(-37px) scale(1.5);
+}
+.dutchmill3.selected {
+    transform: translateY(-370px) translateX(20px) scale(1.5);
+}
+.dutchmill4.selected {
+    transform: translateY(-370px) translateX(10px) scale(1.5);
+}
+.dutchmill5.selected {
+    transform: translateY(-370px) translateX(0px) scale(1.5);
+}
+.dutchmill6.selected {
+    transform: translateY(-370px) translateX(-10px) scale(1.5);
+}
+.dutchmill7.selected {
+    transform: translateY(-370px) translateX(-20px) scale(1.5);
+}
+.jar.selected {
+    transform: translateY(-160px) translateX(20px) scale(1.5);
+}
+.jarBlueberry.selected {
+    transform: translateY(-285px) translateX(10px) scale(1.5);
+}
+.jarStone.selected {
+    transform: translateY(-285px) translateX(-30px) scale(1.5);
+}
+.orange1.selected {
+    transform: translateY(-200px) translateX(5px) scale(1.5);
+}
+.strawberry.selected {
+    transform: translateY(-200px) translateX(0px) scale(1.5);
+}
+.orange3.selected {
+    transform: translateY(-200px) translateX(-5px) scale(1.5);
+}
+.blueberry2.selected {
+    transform: translateY(-200px) translateX(-10px) scale(1.5);
+}
+.seperator {
+    background-color: black;
+    width: 130px;
+    height: 9px;
+}
+/*-------------------- Lower Shelf (Long) --------------------------- */
+.bottom-fridge {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    z-index: 1;
+     perspective: 1100px;
+}
+.shelf-long {
+    position: absolute;
+    background-color: #003782;
+    border-radius: 2px;
+    border: 2px solid black;
+}
+.shelfLong-door {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 145px;
+    height: 190px;
+    background-color: #003782;
+    border-radius: 3px;
+    transition: transform 0.5s ease;
+    transform-origin: right;
+    transform-style: preserve-3d;
+    border: 2px solid black;
+    z-index: 5;
+}
+.shelfLong-door.opened {
+    transform: rotateY(160deg);
+}
+
+.shelfLong-handle {
+    position: absolute;
+    left: 12px;
+    bottom: 105px;
+    background-color: #c2c2c2;
+    border-radius: 30px;
+    border: 1px solid black;
+    height: 70px;
+    width: 8px;
+}
+.longDoor-back {
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    
+}
+.longDoor-background {
+    position:relative;
+    inset: 0;
+    background-color: white;
+    width: 125px;
+    height: 170px;
+    border-radius: 2px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.longDoor-front {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+}
+
+.bgShelf-bottom {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 135px;
+    height: 180px;
+    background-color: white;
+    border-radius: 2px;
+}
+.bottomShelf1 {
+    width: 125px;
+    height: 53px;
+    background-color: #5697ef;
+    border-radius: 2px;
+}
+.bottomShelf2 {
+    width: 125px;
+    height: 115px;
+    background-color: #5697ef;
+    border-radius: 2px;
+}
+.bottomShelf1 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+}
+.bottomShelf2 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+}
+/*--------------- Bottom Items --------------- */
+.blueberries {
+    position: absolute;
+    width: 35px;
+    top: 11px;
+    left: -3px;
+}
+.rock {
+    position: absolute;
+    width: 32px;
+    top: 13px;
+    left: -2px;
+}
+.glass-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url(items/glass-container.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 80%;
+    height: 65px;
+    transition: 0.5s;
+    image-rendering: pixelated;
+    padding-bottom: 1.5px;
+}
+.glass-containerTopSection {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 90%;
+    transition: 0.5s;
+}
+.glass-containerTopSection img{
+    transition: 0.5s;
+}
+.glass-containerBottomSection {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 90%;
+}
+
+
